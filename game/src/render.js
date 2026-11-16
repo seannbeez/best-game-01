@@ -36,7 +36,7 @@ function drawLives(ctx, lives) {
   ctx.translate(0, 0);
   for (let i = 0; i < PLAYER.startLives; i++) {
     const x = 84 + i * 26;
-    const y = 56;
+    const y = 102;
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(-Math.PI / 2);
@@ -238,7 +238,8 @@ export function render(ctx, game) {
     game.powerups.draw(ctx);
     for (const e of game.enemies) e.draw(ctx);
     game.bullets.draw(ctx);
-    game.player.draw(ctx);
+    // The ship is gone once the run is over (it was destroyed).
+    if (game.state !== 'over') game.player.draw(ctx);
     game.particles.draw(ctx);
     drawHud(ctx, game);
     drawWaveBanner(ctx, game);

@@ -141,8 +141,15 @@ class Game {
       this.kills = 86;
       this.best = 15200;
       this.waves.wave = 7;
+      this.waves.active = true;
+      this.waves.intermission = 0;
+      this.waves.queue = ['chaser', 'weaver'];
       this.player.lives = 0;
       this.player.health = 0;
+      // The swarm that got the player is still out there, behind the overlay.
+      this.enemies.push(new Enemy('chaser', 300, 220, 7));
+      this.enemies.push(new Enemy('weaver', 980, 560, 7));
+      this.enemies.push(new Enemy('shooter', 1020, 240, 7));
       this.state = 'over';
       this.frozen = true;
     }
